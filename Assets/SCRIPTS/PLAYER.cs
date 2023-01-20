@@ -23,13 +23,13 @@ public class PLAYER : MonoBehaviour
     public AudioSource Bonuseffect;
     public AudioSource Starseffect;
     
-    // Start is called before the first frame update
+   
     void Start()
     {
-       
+       PlayerPrefs.SetInt("highscore", Score);
     }
 
-    // Update is called once per frame
+
     void Update()
     {   
         if (Input.GetKey(KeyCode.LeftArrow))
