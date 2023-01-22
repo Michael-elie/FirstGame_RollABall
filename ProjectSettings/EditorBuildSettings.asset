@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 427e2a7a4e36380488eaf3c506ff2e9f
+    path: Assets/Scenes/ArcadeRoom.unity
+    guid: ffab8b69230336c42b667618cfdfba8f
   - enabled: 1
-    path: Assets/Scenes/game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/RollballMEnu.unity
+    guid: 9932ddb6ca8605a46ab162213681f6dd
   - enabled: 1
-    path: Assets/Scenes/Loose_Menu.unity
-    guid: 48698ef30171a8c4985a87cbb287097d
-  - enabled: 1
-    path: Assets/Scenes/Win_Menu.unity
-    guid: e2a8a84d4cd03334586d06d26e2f623f
+    path: Assets/Scenes/Game1.unity
+    guid: 80dff9e48eed967489d598e338e906c5
   m_configObjects: {}

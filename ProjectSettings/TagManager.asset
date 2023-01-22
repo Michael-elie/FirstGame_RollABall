@@ -11,6 +11,7 @@ TagManager:
   - YOUWIN
   - YOUWIN_2
   - StarsBonus
+  - PlayZone
   layers:
   - Default
   - TransparentFX
