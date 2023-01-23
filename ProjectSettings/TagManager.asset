@@ -13,6 +13,7 @@ TagManager:
   - StarsBonus
   - PlayZone
   - DoorZone
+  - JukeboxZone
   layers:
   - Default
   - TransparentFX

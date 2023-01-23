@@ -2,18 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+
 public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI HStext;
+    public TextMeshPro HStextposter; 
 
 
     private void Start()
     {
         HStext.text = "" + PlayerPrefs.GetInt("highscore");
+        HStextposter.text =  PlayerPrefs.GetInt("highscore") + " POINTS";
+        //Cursor.lockState = CursorLockMode.Locked; 
+        //Cursor.visible = false;
     }
 
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("Game1");

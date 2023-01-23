@@ -22,6 +22,9 @@ public class MOVEMENT_FPS : MonoBehaviour
     public float x, y, z;
     private bool OpenDoor = false; 
     [SerializeField] private TextMeshPro PressQ;
+    [SerializeField] private TextMeshPro PressM;
+    private bool JukeboxOk = false;
+    [SerializeField] private AudioSource Bgmusic;
  
     public float jumpHeight = 6f;
     float velocityY;
@@ -48,6 +51,7 @@ public class MOVEMENT_FPS : MonoBehaviour
             
             PressP.gameObject.SetActive(false);
             PressQ.gameObject.SetActive(false);
+            PressM.gameObject.SetActive(false);
         }
     }
  
@@ -68,6 +72,16 @@ public class MOVEMENT_FPS : MonoBehaviour
         {
             Application.Quit();
             Debug.Log("quit");
+        }
+
+        if (JukeboxOk && Input.GetKeyDown((KeyCode.M)))
+        {
+            Bgmusic.Stop();
+           
+        }
+        else if ((JukeboxOk && Input.GetKeyDown((KeyCode.P))))
+        {
+            Bgmusic.Play();
         }
     }
  
@@ -126,7 +140,12 @@ public class MOVEMENT_FPS : MonoBehaviour
             PressQ.gameObject.SetActive(true);
             OpenDoor = true;
         }
-        
+        else if (other.gameObject.CompareTag("JukeboxZone"))
+        {
+            PressM.gameObject.SetActive(true);
+            JukeboxOk = true;
+         
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -140,6 +159,12 @@ public class MOVEMENT_FPS : MonoBehaviour
         {
             PressQ.gameObject.SetActive(false);
             OpenDoor = false;
+        }
+        else if (other.gameObject.CompareTag("JukeboxZone"))
+        {
+            PressM.gameObject.SetActive(false);
+            JukeboxOk = false;
+         
         }
 
         
