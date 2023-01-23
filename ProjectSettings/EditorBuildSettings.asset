@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game1.unity
     guid: 80dff9e48eed967489d598e338e906c5
+  - enabled: 1
+    path: Assets/Scenes/RollballLooseMenu.unity
+    guid: d4838490c332ad240a9f86602fc5f888
+  - enabled: 1
+    path: Assets/Scenes/RollballWinMenu 1.unity
+    guid: f1caa9419459540469dbc72f7c8d9736
   m_configObjects: {}

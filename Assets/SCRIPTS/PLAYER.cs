@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Timers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class PLAYER : MonoBehaviour
 {
@@ -15,18 +15,18 @@ public class PLAYER : MonoBehaviour
     public float RightmooveSpeed = -1f;
     
 
-    [SerializeField] public int Score = 0;
+    public int Score = 0;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private TMP_Text TimerText;
     [SerializeField] private TIMER Timerscipt;
     public AudioSource Maluseffect;
     public AudioSource Bonuseffect;
     public AudioSource Starseffect;
-    
+    public TIMER Timerscript;
    
     void Start()
     {
-       PlayerPrefs.SetInt("highscore", Score);
+       
     }
 
 
@@ -53,6 +53,26 @@ public class PLAYER : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(0, 0, DownmooveSpeed);
         }
 
+        if (Score >= 50 && Timerscipt.Duration == 0)
+        {
+            if (Score > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", Score); 
+            }
+            SceneManager.LoadScene("RollballWinMenu");
+        
+          
+        }
+
+        //loose screen
+        if (Score <= 50 && Timerscipt.Duration == 0)
+        {
+            if (Score > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", Score); 
+            }
+            SceneManager.LoadScene("RollballLooseMenu");
+        }
         
     }
     
@@ -79,8 +99,15 @@ public class PLAYER : MonoBehaviour
             TimerText.text = "TIME LEFT : " + Mathf.Floor(Timerscipt.Duration).ToString();
             Starseffect.Play();
         }    
-
-
-
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

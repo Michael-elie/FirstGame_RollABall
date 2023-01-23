@@ -10,7 +10,7 @@ public class TIMER : MonoBehaviour
     public float Duration = 60f;
     [SerializeField] private TMP_Text TimerText;
     public PLAYER Scorescript;
-    
+    private PLAYER _playerscript;
     private void Start()
     {
         
@@ -44,19 +44,21 @@ public class TIMER : MonoBehaviour
 
 
       // win screen   
-      if (Scorescript.Score >= 50 && Duration == 0)
+     /* if (Scorescript.Score >= 50 && Duration == 0)
       {
-       
-          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+          PlayerPrefs.SetInt("highscore", _playerscript.Score);
+          SceneManager.LoadScene("RollballWinMenu");
+        
           
       }
 
       //loose screen
         if (Scorescript.Score <= 50 && Duration == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("highscore", _playerscript.Score);
+            SceneManager.LoadScene("RollballLooseMenu");
         }
-
+*/
         
         
     }

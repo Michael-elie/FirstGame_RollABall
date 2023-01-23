@@ -19,6 +19,9 @@ public class MOVEMENT_FPS : MonoBehaviour
     [SerializeField] private TextMeshPro PressP;
     private bool GoPlay = false;
     [SerializeField] private AudioSource CoinSound;
+    public float x, y, z;
+    private bool OpenDoor = false; 
+    [SerializeField] private TextMeshPro PressQ;
  
     public float jumpHeight = 6f;
     float velocityY;
@@ -34,7 +37,7 @@ public class MOVEMENT_FPS : MonoBehaviour
     Vector3 velocity;
  
     void Start()
-    {
+    {  LoadPosition();
         controller = GetComponent<CharacterController>();
  
         if (cursorLock)
@@ -44,6 +47,7 @@ public class MOVEMENT_FPS : MonoBehaviour
             
             
             PressP.gameObject.SetActive(false);
+            PressQ.gameObject.SetActive(false);
         }
     }
  
@@ -54,8 +58,16 @@ public class MOVEMENT_FPS : MonoBehaviour
         
         if (GoPlay && Input.GetKeyDown(KeyCode.P))
         {
+            SavePosition();
             CoinSound.Play();
-            StartCoroutine(WaitScene());   
+            StartCoroutine(WaitScene()); 
+            
+        }
+
+        if (OpenDoor && Input.GetKeyDown((KeyCode.Q)))
+        {
+            Application.Quit();
+            Debug.Log("quit");
         }
     }
  
@@ -109,7 +121,12 @@ public class MOVEMENT_FPS : MonoBehaviour
            
             
         }
-       
+        else if (other.gameObject.CompareTag("DoorZone"))
+        {
+            PressQ.gameObject.SetActive(true);
+            OpenDoor = true;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -119,6 +136,13 @@ public class MOVEMENT_FPS : MonoBehaviour
             PressP.gameObject.SetActive(false);
             GoPlay = false;
         }
+        else if (other.gameObject.CompareTag("DoorZone"))
+        {
+            PressQ.gameObject.SetActive(false);
+            OpenDoor = false;
+        }
+
+        
     }
     
     IEnumerator WaitScene()
@@ -126,4 +150,31 @@ public class MOVEMENT_FPS : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void SavePosition()
+    {
+        x = transform.position.x;
+        y = transform.position.y;
+        z = transform.position.z;
+        
+        PlayerPrefs.SetFloat("x", x);
+        PlayerPrefs.SetFloat("y", y);
+        PlayerPrefs.SetFloat("z", z);
+        
+    }
+
+    public void LoadPosition()
+    {
+        x = PlayerPrefs.GetFloat("x") ;
+        y = PlayerPrefs.GetFloat("y") ;
+        z = PlayerPrefs.GetFloat("z") ;
+
+        Vector3 LoadPosition = new Vector3(x, y, z);
+        transform.position = LoadPosition;
+    }
+    
+    
+    
+    
+    
 }
