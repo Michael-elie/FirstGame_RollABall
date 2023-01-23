@@ -59,7 +59,7 @@ public class PLAYER : MonoBehaviour
             {
                 PlayerPrefs.SetInt("highscore", Score); 
             }
-            SceneManager.LoadScene("RollballWinMenu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
           
         }
@@ -71,7 +71,7 @@ public class PLAYER : MonoBehaviour
             {
                 PlayerPrefs.SetInt("highscore", Score); 
             }
-            SceneManager.LoadScene("RollballLooseMenu");
+            SceneManager.LoadScene("LooseMenu");
         }
         
     }
