@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,14 @@ using UnityEngine.UI;
 
 public class MenuPause : MonoBehaviour
 {
-    [SerializeField] private  Button PauseButton;
+   
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI; 
 
 
     private void Start()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         
     }
 
@@ -32,7 +33,11 @@ public class MenuPause : MonoBehaviour
         
     }
 
-
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game1");
+        Time.timeScale = 1f;
+    }
 
     public  void Play()
     {
@@ -51,7 +56,10 @@ public class MenuPause : MonoBehaviour
 
     public void MainMenuButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+       
+        
     }
 
     

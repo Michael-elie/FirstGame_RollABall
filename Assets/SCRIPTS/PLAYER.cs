@@ -23,6 +23,7 @@ public class PLAYER : MonoBehaviour
     public AudioSource Bonuseffect;
     public AudioSource Starseffect;
     public TIMER Timerscript;
+    public MenuPause MenuPause;
    
     void Start()
     {
@@ -72,6 +73,11 @@ public class PLAYER : MonoBehaviour
                 PlayerPrefs.SetInt("highscore", Score); 
             }
             SceneManager.LoadScene("LooseMenu");
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            MenuPause.Stop();
         }
         
     }

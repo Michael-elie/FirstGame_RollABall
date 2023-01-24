@@ -14,6 +14,7 @@ TagManager:
   - PlayZone
   - DoorZone
   - JukeboxZone
+  - doorcloset
   layers:
   - Default
   - TransparentFX

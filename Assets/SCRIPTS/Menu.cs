@@ -10,13 +10,16 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI HStext;
-    public TextMeshPro HStextposter; 
+    public TextMeshPro HStextposter;
+    public TextMeshProUGUI Scoretext;
+    public PLAYER playerscript;
 
 
     private void Start()
     {
         HStext.text = "" + PlayerPrefs.GetInt("highscore");
         HStextposter.text =  PlayerPrefs.GetInt("highscore") + " POINTS";
+        Scoretext.text = "" + playerscript.Score;
         //Cursor.lockState = CursorLockMode.Locked; 
         //Cursor.visible = false;
     }

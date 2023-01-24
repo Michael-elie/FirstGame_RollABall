@@ -20,11 +20,19 @@ public class MOVEMENT_FPS : MonoBehaviour
     private bool GoPlay = false;
     [SerializeField] private AudioSource CoinSound;
     public float x, y, z;
-    private bool OpenDoor = false; 
+    private bool DoorOk = false; 
     [SerializeField] private TextMeshPro PressQ;
     [SerializeField] private TextMeshPro PressM;
     private bool JukeboxOk = false;
     [SerializeField] private AudioSource Bgmusic;
+    [SerializeField] private GameObject Lights;
+    private bool LightsOn = true;
+    [SerializeField] private AudioSource switchsound;
+    public Animator doorAnimator;
+    private bool DoorOpen;
+    private bool DoorIsOpen;
+    [SerializeField] private TextMeshPro PressEtoopen;
+    [SerializeField] private GameObject ceiling; 
  
     public float jumpHeight = 6f;
     float velocityY;
@@ -52,6 +60,7 @@ public class MOVEMENT_FPS : MonoBehaviour
             PressP.gameObject.SetActive(false);
             PressQ.gameObject.SetActive(false);
             PressM.gameObject.SetActive(false);
+            PressEtoopen.gameObject.SetActive(false);
         }
     }
  
@@ -68,7 +77,7 @@ public class MOVEMENT_FPS : MonoBehaviour
             
         }
 
-        if (OpenDoor && Input.GetKeyDown((KeyCode.Q)))
+        if (DoorOk && Input.GetKeyDown((KeyCode.Q)))
         {
             Application.Quit();
             Debug.Log("quit");
@@ -82,6 +91,29 @@ public class MOVEMENT_FPS : MonoBehaviour
         else if ((JukeboxOk && Input.GetKeyDown((KeyCode.P))))
         {
             Bgmusic.Play();
+        }
+        else if (LightsOn == true && DoorOk && Input.GetKeyDown((KeyCode.E)))
+        { LightsOn = false;
+            switchsound.Play();
+            Lights.SetActive(false);
+          
+          
+        } else if (LightsOn == false && DoorOk && Input.GetKeyDown((KeyCode.E )))
+        {
+            LightsOn = true;  
+            switchsound.Play();
+            Lights.SetActive(true);
+        }
+        else if ( DoorIsOpen== false && DoorOpen && Input.GetKeyDown((KeyCode.E )))
+        {
+            DoorIsOpen = true;
+            doorAnimator.SetBool("IsOpen",true);
+            
+        }
+        else if ( DoorIsOpen== true && DoorOpen && Input.GetKeyDown((KeyCode.E )))
+        {
+            DoorIsOpen = false;
+            doorAnimator.SetBool("IsOpen",false);
         }
     }
  
@@ -138,12 +170,18 @@ public class MOVEMENT_FPS : MonoBehaviour
         else if (other.gameObject.CompareTag("DoorZone"))
         {
             PressQ.gameObject.SetActive(true);
-            OpenDoor = true;
+            DoorOk = true;
         }
         else if (other.gameObject.CompareTag("JukeboxZone"))
         {
             PressM.gameObject.SetActive(true);
             JukeboxOk = true;
+         
+        }
+        else if (other.gameObject.CompareTag("doorcloset"))
+        {
+            PressEtoopen.gameObject.SetActive(true);
+            DoorOpen = true;
          
         }
     }
@@ -158,12 +196,18 @@ public class MOVEMENT_FPS : MonoBehaviour
         else if (other.gameObject.CompareTag("DoorZone"))
         {
             PressQ.gameObject.SetActive(false);
-            OpenDoor = false;
+            DoorOk = false;
         }
         else if (other.gameObject.CompareTag("JukeboxZone"))
         {
             PressM.gameObject.SetActive(false);
             JukeboxOk = false;
+         
+        }
+        else if (other.gameObject.CompareTag("doorcloset"))
+        {
+            PressEtoopen.gameObject.SetActive(false);
+            DoorOk = false;
          
         }
 
