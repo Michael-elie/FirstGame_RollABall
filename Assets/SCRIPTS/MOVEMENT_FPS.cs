@@ -30,7 +30,7 @@ public class MOVEMENT_FPS : MonoBehaviour
     [SerializeField] private AudioSource switchsound;
     public Animator doorAnimator;
     private bool DoorOpen;
-    private bool DoorIsOpen;
+  //  private bool DoorIsOpen;
     [SerializeField] private TextMeshPro PressEtoopen;
     [SerializeField] private GameObject ceiling; 
  
@@ -96,15 +96,16 @@ public class MOVEMENT_FPS : MonoBehaviour
         { LightsOn = false;
             switchsound.Play();
             Lights.SetActive(false);
-          
-          
+            ceiling.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+
         } else if (LightsOn == false && DoorOk && Input.GetKeyDown((KeyCode.E )))
         {
             LightsOn = true;  
             switchsound.Play();
             Lights.SetActive(true);
+            ceiling.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.white);
         }
-        else if ( DoorIsOpen== false && DoorOpen && Input.GetKeyDown((KeyCode.E )))
+        /*else if ( DoorIsOpen== false && DoorOpen && Input.GetKeyDown((KeyCode.E )))
         {
             DoorIsOpen = true;
             doorAnimator.SetBool("IsOpen",true);
@@ -114,7 +115,7 @@ public class MOVEMENT_FPS : MonoBehaviour
         {
             DoorIsOpen = false;
             doorAnimator.SetBool("IsOpen",false);
-        }
+        }*/
     }
  
     void UpdateMouse()
@@ -178,12 +179,12 @@ public class MOVEMENT_FPS : MonoBehaviour
             JukeboxOk = true;
          
         }
-        else if (other.gameObject.CompareTag("doorcloset"))
+        /*else if (other.gameObject.CompareTag("doorcloset"))
         {
             PressEtoopen.gameObject.SetActive(true);
             DoorOpen = true;
          
-        }
+        }*/
     }
 
     private void OnTriggerExit(Collider other)
@@ -204,12 +205,12 @@ public class MOVEMENT_FPS : MonoBehaviour
             JukeboxOk = false;
          
         }
-        else if (other.gameObject.CompareTag("doorcloset"))
+        /*else if (other.gameObject.CompareTag("doorcloset"))
         {
             PressEtoopen.gameObject.SetActive(false);
             DoorOk = false;
          
-        }
+        }*/
 
         
     }

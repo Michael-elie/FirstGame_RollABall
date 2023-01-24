@@ -11,7 +11,6 @@ public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI HStext;
     public TextMeshPro HStextposter;
-    public TextMeshProUGUI Scoretext;
     public PLAYER playerscript;
 
 
@@ -19,7 +18,7 @@ public class Menu : MonoBehaviour
     {
         HStext.text = "" + PlayerPrefs.GetInt("highscore");
         HStextposter.text =  PlayerPrefs.GetInt("highscore") + " POINTS";
-        Scoretext.text = "" + playerscript.Score;
+       
         //Cursor.lockState = CursorLockMode.Locked; 
         //Cursor.visible = false;
     }

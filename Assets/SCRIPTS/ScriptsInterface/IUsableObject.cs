@@ -6,4 +6,16 @@ public interface IUsableObject
     {
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
