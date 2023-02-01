@@ -6,28 +6,44 @@ using UnityEngine;
 public class Objectcolorchange : MonoBehaviour,IUsableObject
 
 {
-    private bool ColorChange = false;
-    private Color basecolor; 
+   // private bool ColorChange = false;
+   // private Color basecolor;
+    private Color[] Couleurs = { Color.magenta, Color.yellow, Color.blue, Color.green, Color.cyan,Color.white, };
+    private int actualclor = -1 ; 
     public void UseObject()
     {
-        
-        if (ColorChange == false)
+        actualclor++;
+        if (actualclor>= Couleurs.Length)
         {
-            ColorChange = true;
-            GetComponent<MeshRenderer>().material.SetColor("_Color", Color.magenta);
+            actualclor = 0;
         }
+
+        GetComponent<MeshRenderer>().material.SetColor("_Color", Couleurs[actualclor] ); 
+                
         
-        else if (ColorChange == true)
-        {
-            ColorChange = false;
-            GetComponent<MeshRenderer>().material.color = basecolor;
-        }
+        
+        
+        
+        
+        
+        
+        /*  if (ColorChange == false)
+          {
+              ColorChange = true;
+              GetComponent<MeshRenderer>().material.SetColor("_Color", Color.magenta);
+          }
+          
+          else if (ColorChange == true)
+          {
+              ColorChange = false;
+              GetComponent<MeshRenderer>().material.color = basecolor;
+          }*/
         
         
 
     }
     public void Start()
     {
-        basecolor = GetComponent<MeshRenderer>().material.GetColor("_Color");
+       // basecolor = GetComponent<MeshRenderer>().material.GetColor("_Color");
     }
 }
