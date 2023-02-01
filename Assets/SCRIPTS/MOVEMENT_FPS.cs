@@ -92,13 +92,13 @@ public class MOVEMENT_FPS : MonoBehaviour
         {
             Bgmusic.Play();
         }
-        else if (LightsOn == true && DoorOk && Input.GetKeyDown((KeyCode.E)))
+        else if (LightsOn == true && DoorOk && Input.GetKeyDown((KeyCode.A)))
         { LightsOn = false;
             switchsound.Play();
             Lights.SetActive(false);
             ceiling.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
 
-        } else if (LightsOn == false && DoorOk && Input.GetKeyDown((KeyCode.E )))
+        } else if (LightsOn == false && DoorOk && Input.GetKeyDown((KeyCode.A )))
         {
             LightsOn = true;  
             switchsound.Play();
