@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class SPAWN_TARGET : MonoBehaviour
@@ -21,13 +23,29 @@ public class SPAWN_TARGET : MonoBehaviour
 
     }
     
-    public void respawn ()
+    public void respawn (string name)
 
         {
-            StartCoroutine(DelayBeforeSpawn());
+            if (name == gameObject.name)
+            {
+                StartCoroutine(DelayBeforeSpawn());
+            }
+           
         }
-        
 
-        
-    
+   private void OnEnable()
+   { 
+       TARGET.OnTargetTouched += respawn;
+   }
+   
+   private void OnDisable()
+   {
+       TARGET.OnTargetTouched -= respawn;
+   }
+   
+   
+   
+   
+   
 }
+

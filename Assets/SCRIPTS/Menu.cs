@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI HStext;
     public TextMeshPro HStextposter;
     public PLAYER playerscript;
-
+    [SerializeField] private AppData choice;
 
     private void Start()
     {
@@ -35,9 +35,18 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("ArcadeRoom");
 
     }
-    
- 
+
+    public void Menuprincipal()
+
+    {
+        SceneManager.LoadScene("RollballMEnu");   
+    }
+
+    public void ChooseDifficulty (int choice)
+    {
         
-    
-   
+    }
+
+
+
 }

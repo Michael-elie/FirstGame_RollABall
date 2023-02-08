@@ -11,6 +11,7 @@ public class TIMER : MonoBehaviour
     [SerializeField] private TMP_Text TimerText;
     public PLAYER Scorescript;
     private PLAYER _playerscript;
+    
     private void Start()
     {
         

@@ -8,22 +8,24 @@ using UnityEngine.SceneManagement;
 
 public class PLAYER : MonoBehaviour
 {
-    public float UpmooveSpeed = -1f;
-    public float DownmooveSpeed = 1f;
-    public float LeftmooveSpeed = 1f;
+    public float UpmooveSpeed = -1.3f;
+    public float DownmooveSpeed = 1.3f;
+    public float LeftmooveSpeed = 1.3f;
 
-    public float RightmooveSpeed = -1f;
-    
+    public float RightmooveSpeed = -1.3f;
 
     public int Score = 0;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private TMP_Text TimerText;
-    [SerializeField] private TIMER Timerscipt;
+   [SerializeField] private TIMER Timerscipt;
     public AudioSource Maluseffect;
     public AudioSource Bonuseffect;
     public AudioSource Starseffect;
     public TIMER Timerscript;
     public MenuPause MenuPause;
+    [SerializeField] private ScenarioData _scenario;
+    
+    
    
     void Start()
     {
@@ -54,9 +56,9 @@ public class PLAYER : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(0, 0, DownmooveSpeed);
         }
 
-        if (Score >= 50 && Timerscipt.Duration == 0)
+        if (Score > _scenario.ScoreTarget && Timerscipt.Duration == 0)
         {
-            if (Score > PlayerPrefs.GetInt("highscore"))
+            if (Score> PlayerPrefs.GetInt("highscore"))
             {
                 PlayerPrefs.SetInt("highscore", Score); 
             }
@@ -66,7 +68,7 @@ public class PLAYER : MonoBehaviour
         }
 
         //loose screen
-        if (Score <= 50 && Timerscipt.Duration == 0)
+        if (Score < _scenario.ScoreTarget && Timerscipt.Duration == 0)
         {
             if (Score > PlayerPrefs.GetInt("highscore"))
             {
@@ -86,22 +88,22 @@ public class PLAYER : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Target"))
         {
-            Score++ ;
+            Score = Score + _scenario.BonusValue ;
             ScoreText.text = "SCORE : " + Score.ToString() + " / 50";
             Bonuseffect.Play();
         }
      
-        else if (other.gameObject.CompareTag("MalusTarget")) 
+        else if (other.gameObject.CompareTag("MalusTarget"))
 
         {
-            Score--;
+            Score = Score + _scenario.MalusValue;
             ScoreText.text =  "SCORE : " + Score.ToString() + " / 50";;
             Maluseffect.Play();
         }
         else if (other.gameObject.CompareTag("StarsBonus"))
 
         {
-            Timerscipt.Duration = Timerscipt.Duration +10f;
+           Timerscipt.Duration = Timerscipt.Duration + 10f;
             TimerText.text = "TIME LEFT : " + Mathf.Floor(Timerscipt.Duration).ToString();
             Starseffect.Play();
         }    

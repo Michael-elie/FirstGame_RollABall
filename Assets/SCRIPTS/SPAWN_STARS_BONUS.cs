@@ -6,7 +6,7 @@ using UnityEngine;
 public class SPAWN_STARS_BONUS : MonoBehaviour
 {
     [SerializeField] public GameObject StarsBonus;
-    [SerializeField] private float Timer = 60f;
+  //  [SerializeField] private float Timer = 60f;
     [SerializeField] private TIMER timerScript;
     private bool StarBonusLock = true;
     

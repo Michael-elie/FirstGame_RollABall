@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 0.5
+  SpawnerScript: {fileID: 0}
 --- !u!64 &7018337753764300745
 MeshCollider:
   m_ObjectHideFlags: 0
