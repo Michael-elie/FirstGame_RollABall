@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338ddb87e20fad948844bc45595a6519, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  BonusStars: {fileID: 0}
-  malusultra: {fileID: 0}
-  MalusNumber: 0
-  BonusNumber: 0
-  MalusValue: 0
-  BonusValue: 0
-  StarNumber: 0
-  ScoreTarget: 0
+  MalusNumber: 4
+  BonusNumber: 4
+  MalusValue: -1
+  BonusValue: 1
+  ScoreTarget: 50
+  ScoreTargettext: 50
+  StarSpawn: 0
+  UltraMalusSpawn: 0

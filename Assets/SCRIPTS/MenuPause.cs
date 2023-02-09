@@ -14,7 +14,7 @@ public class MenuPause : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         
     }
 
@@ -61,7 +61,14 @@ public class MenuPause : MonoBehaviour
        
         
     }
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("ArcadeRoom");
 
+    }
+    
+    
     
     
     

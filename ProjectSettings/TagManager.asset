@@ -16,6 +16,7 @@ TagManager:
   - JukeboxZone
   - doorcloset
   - Interactable
+  - UltraMalus
   layers:
   - Default
   - TransparentFX

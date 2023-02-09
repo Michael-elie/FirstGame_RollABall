@@ -3346,7 +3346,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 0
-  PressP: {fileID: 1943298433}
+  Pressx: {fileID: 1943298433}
   CoinSound: {fileID: 314371283}
   x: 0
   y: 0
@@ -8708,6 +8708,7 @@ MonoBehaviour:
   HStext: {fileID: 352534722}
   HStextposter: {fileID: 483133855}
   playerscript: {fileID: 0}
+  Choice: {fileID: 0}
 --- !u!4 &1810921551
 Transform:
   m_ObjectHideFlags: 0
@@ -9279,7 +9280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PRESS [P] TO PLAY '
+  m_text: 'PRESS [x] TO PLAY '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebb544afbcb38df4490aa6b688b3a4f7, type: 2}
   m_sharedMaterial: {fileID: -2241885976132944755, guid: ebb544afbcb38df4490aa6b688b3a4f7, type: 2}

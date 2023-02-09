@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,16 +9,23 @@ public class TARGET : MonoBehaviour
 {
     public float RotationSpeed = 1f;
     public SPAWN_TARGET SpawnerScript;
-
+     
+    
 
   
 
     public delegate void TargetEvents(string name);
 
     public static event TargetEvents OnTargetTouched;
+
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
-        transform.Rotate(0f,RotationSpeed,0f);
+        transform.Rotate(0f,1f,0f);
     }
 
     private void OnTriggerEnter(Collider other)

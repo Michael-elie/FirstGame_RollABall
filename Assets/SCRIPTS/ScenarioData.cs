@@ -12,14 +12,17 @@ using UnityEngine;
 public class ScenarioData: ScriptableObject
    {
        //public int Score;
-       public GameObject BonusStars;
-       public GameObject malusultra;
+      // public GameObject BonusStars;
+     //  public GameObject malusultra;
      //  public float GameDuration;
        public int MalusNumber;
        public int BonusNumber;
        public int MalusValue;
-       public int BonusValue;
-       public int StarNumber;
+       public int BonusValue; 
+       //public int StarNumber;
        public int ScoreTarget;
+       public string ScoreTargettext;
+       public bool StarSpawn;
+       public bool UltraMalusSpawn; 
    }
 

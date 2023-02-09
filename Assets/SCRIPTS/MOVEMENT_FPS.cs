@@ -16,7 +16,7 @@ public class MOVEMENT_FPS : MonoBehaviour
     [SerializeField] float gravity = -30f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
-    [SerializeField] private TextMeshPro PressP;
+    [SerializeField] private TextMeshPro Pressx;
     private bool GoPlay = false;
     [SerializeField] private AudioSource CoinSound;
     public float x, y, z;
@@ -57,7 +57,7 @@ public class MOVEMENT_FPS : MonoBehaviour
             Cursor.visible = true;
             
             
-            PressP.gameObject.SetActive(false);
+            Pressx.gameObject.SetActive(false);
             PressQ.gameObject.SetActive(false);
             PressM.gameObject.SetActive(false);
             PressEtoopen.gameObject.SetActive(false);
@@ -69,7 +69,7 @@ public class MOVEMENT_FPS : MonoBehaviour
         UpdateMouse();
         UpdateMove();
         
-        if (GoPlay && Input.GetKeyDown(KeyCode.P))
+        if (GoPlay && Input.GetKeyDown(KeyCode.X))
         {
             SavePosition();
             CoinSound.Play();
@@ -163,7 +163,7 @@ public class MOVEMENT_FPS : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayZone"))
         {
-            PressP.gameObject.SetActive(true);
+            Pressx.gameObject.SetActive(true);
             GoPlay = true;
            
             
@@ -191,7 +191,7 @@ public class MOVEMENT_FPS : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayZone"))
         {
-            PressP.gameObject.SetActive(false);
+            Pressx.gameObject.SetActive(false);
             GoPlay = false;
         }
         else if (other.gameObject.CompareTag("DoorZone"))

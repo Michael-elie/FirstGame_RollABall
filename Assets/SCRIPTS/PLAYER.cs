@@ -23,18 +23,26 @@ public class PLAYER : MonoBehaviour
     public AudioSource Starseffect;
     public TIMER Timerscript;
     public MenuPause MenuPause;
-    [SerializeField] private ScenarioData _scenario;
-    
-    
+   // [SerializeField] private ScenarioData _scenario;
+    [SerializeField] private AppData _appData; 
+    [SerializeField] private GameObject Ultramalus;
+    public AudioSource UltramalusSound; 
    
     void Start()
     {
-       
+        Ultramalus.SetActive(false);
+        if (_appData.Scenarioactuelle.UltraMalusSpawn == true)
+        {
+            Ultramalus.SetActive(true);
+        }
+        
     }
 
 
     void Update()
     {   
+        Ultramalus.transform.Rotate(0f,1f,0f);
+        
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             GetComponent<Rigidbody>().AddForce(LeftmooveSpeed, 0, 0);
@@ -56,7 +64,7 @@ public class PLAYER : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(0, 0, DownmooveSpeed);
         }
 
-        if (Score > _scenario.ScoreTarget && Timerscipt.Duration == 0)
+        if (Score > _appData.Scenarioactuelle.ScoreTarget && Timerscipt.Duration == 0)
         {
             if (Score> PlayerPrefs.GetInt("highscore"))
             {
@@ -68,7 +76,7 @@ public class PLAYER : MonoBehaviour
         }
 
         //loose screen
-        if (Score < _scenario.ScoreTarget && Timerscipt.Duration == 0)
+        if (Score < _appData.Scenarioactuelle.ScoreTarget && Timerscipt.Duration == 0)
         {
             if (Score > PlayerPrefs.GetInt("highscore"))
             {
@@ -88,16 +96,16 @@ public class PLAYER : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Target"))
         {
-            Score = Score + _scenario.BonusValue ;
-            ScoreText.text = "SCORE : " + Score.ToString() + " / 50";
+            Score = Score + _appData.Scenarioactuelle.BonusValue ;
+            ScoreText.text = "SCORE : " + Score.ToString() + " / " + _appData.Scenarioactuelle.ScoreTargettext ;
             Bonuseffect.Play();
         }
      
         else if (other.gameObject.CompareTag("MalusTarget"))
 
         {
-            Score = Score + _scenario.MalusValue;
-            ScoreText.text =  "SCORE : " + Score.ToString() + " / 50";;
+            Score = Score + _appData.Scenarioactuelle.MalusValue;
+            ScoreText.text =  "SCORE : " + Score.ToString() + " / " + _appData.Scenarioactuelle.ScoreTargettext;;
             Maluseffect.Play();
         }
         else if (other.gameObject.CompareTag("StarsBonus"))
@@ -106,6 +114,13 @@ public class PLAYER : MonoBehaviour
            Timerscipt.Duration = Timerscipt.Duration + 10f;
             TimerText.text = "TIME LEFT : " + Mathf.Floor(Timerscipt.Duration).ToString();
             Starseffect.Play();
+        } 
+        else if (other.gameObject.CompareTag("UltraMalus"))
+
+        {
+            UltramalusSound.Play();
+            SceneManager.LoadScene("LooseMenu");
+            
         }    
         
     }

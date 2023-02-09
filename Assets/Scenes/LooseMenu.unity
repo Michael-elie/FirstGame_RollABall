@@ -1891,7 +1891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HStext: {fileID: 1694482633}
   HStextposter: {fileID: 0}
-  playerscript: {fileID: 0}
+  Choice: {fileID: 11400000, guid: 218c30f8467f9a04482170c2a8fd88b8, type: 2}
 --- !u!4 &1126356453
 Transform:
   m_ObjectHideFlags: 0

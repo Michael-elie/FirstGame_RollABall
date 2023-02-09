@@ -11,8 +11,8 @@ public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI HStext;
     public TextMeshPro HStextposter;
-    public PLAYER playerscript;
-    [SerializeField] private AppData choice;
+   // public PLAYER playerscript;
+    [SerializeField] private AppData Choice;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class Menu : MonoBehaviour
     
     public void PlayGame()
     {
+        
         SceneManager.LoadScene("Game1");
 
     }
@@ -44,7 +45,7 @@ public class Menu : MonoBehaviour
 
     public void ChooseDifficulty (int choice)
     {
-        
+        Choice.Scenarioactuelle = Choice.tableauscenrario[choice];
     }
 
 

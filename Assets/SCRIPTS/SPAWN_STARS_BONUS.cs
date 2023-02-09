@@ -9,7 +9,7 @@ public class SPAWN_STARS_BONUS : MonoBehaviour
   //  [SerializeField] private float Timer = 60f;
     [SerializeField] private TIMER timerScript;
     private bool StarBonusLock = true;
-    
+    [SerializeField] private AppData _appData; 
     void Start()
     {
         StarsBonus.gameObject.SetActive(false);
@@ -17,7 +17,7 @@ public class SPAWN_STARS_BONUS : MonoBehaviour
     
     void Update()
     {
-        if (timerScript.Duration <=5f && StarBonusLock)
+        if (timerScript.Duration <=5f && StarBonusLock && _appData.Scenarioactuelle.StarSpawn == true)
         {
             Vector3 RandomSpawnPosition = new Vector3(Random.Range(-3.55f,3.55f), 1.936722f, Random.Range(-3.55f, 3.55f));
             StarsBonus.transform.position = RandomSpawnPosition;
@@ -25,7 +25,8 @@ public class SPAWN_STARS_BONUS : MonoBehaviour
             StarBonusLock = false;
         }
        
-        
+
+
 
     }
        
