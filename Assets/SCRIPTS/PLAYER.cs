@@ -27,19 +27,24 @@ public class PLAYER : MonoBehaviour
     [SerializeField] private AppData _appData; 
     [SerializeField] private GameObject Ultramalus;
     public AudioSource UltramalusSound; 
+    
    
     void Start()
     {
+        Application.targetFrameRate = -1;
         Ultramalus.SetActive(false);
         if (_appData.Scenarioactuelle.UltraMalusSpawn == true)
         {
             Ultramalus.SetActive(true);
-        }
+            
         
+        }
+        ScoreText.text = "SCORE : " + Score.ToString() + " / " + _appData.Scenarioactuelle.ScoreTargettext ;
+       
     }
 
 
-    void Update()
+    void FixedUpdate()
     {   
         Ultramalus.transform.Rotate(0f,1f,0f);
         
@@ -64,6 +69,16 @@ public class PLAYER : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(0, 0, DownmooveSpeed);
         }
 
+     
+        
+        
+        
+        
+    }
+
+
+    private void Update()
+    {
         if (Score > _appData.Scenarioactuelle.ScoreTarget && Timerscipt.Duration == 0)
         {
             if (Score> PlayerPrefs.GetInt("highscore"))
@@ -71,8 +86,6 @@ public class PLAYER : MonoBehaviour
                 PlayerPrefs.SetInt("highscore", Score); 
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
-          
         }
 
         //loose screen
@@ -89,9 +102,8 @@ public class PLAYER : MonoBehaviour
         {
             MenuPause.Stop();
         }
-        
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Target"))

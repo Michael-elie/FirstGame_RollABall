@@ -25,7 +25,7 @@ public class TARGET : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0f,1f,0f);
+        transform.Rotate(0f,RotationSpeed,0f);
     }
 
     private void OnTriggerEnter(Collider other)

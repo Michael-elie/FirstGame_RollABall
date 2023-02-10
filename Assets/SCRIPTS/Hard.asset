@@ -16,7 +16,7 @@ MonoBehaviour:
   BonusNumber: 4
   MalusValue: -2
   BonusValue: 1
-  ScoreTarget: 60
-  ScoreTargettext: 60
+  ScoreTarget: 50
+  ScoreTargettext: 50
   StarSpawn: 0
   UltraMalusSpawn: 0
